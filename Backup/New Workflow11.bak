@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.1">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="78" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\Users\Admin\Downloads\4701229_L2W7R41L.xlsx|||`Sheet1$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>4701229_L2W7R41L.xlsx
+Query=`Sheet1$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Customer_ID" source="File: C:\Users\Admin\Downloads\4701229_L2W7R41L.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Store Number" source="File: C:\Users\Admin\Downloads\4701229_L2W7R41L.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Customer Segment" size="255" source="File: C:\Users\Admin\Downloads\4701229_L2W7R41L.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="First Name" size="255" source="File: C:\Users\Admin\Downloads\4701229_L2W7R41L.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Last Name" size="255" source="File: C:\Users\Admin\Downloads\4701229_L2W7R41L.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Address" size="255" source="File: C:\Users\Admin\Downloads\4701229_L2W7R41L.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="City" size="255" source="File: C:\Users\Admin\Downloads\4701229_L2W7R41L.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="State" size="255" source="File: C:\Users\Admin\Downloads\4701229_L2W7R41L.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Zip" source="File: C:\Users\Admin\Downloads\4701229_L2W7R41L.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Visits" source="File: C:\Users\Admin\Downloads\4701229_L2W7R41L.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Spend" source="File: C:\Users\Admin\Downloads\4701229_L2W7R41L.xlsx|||`Sheet1$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+        <Position x="198" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields>
+            <SummarizeField field="Store Number" action="GroupBy" rename="Store Number" />
+            <SummarizeField field="Customer Segment" action="GroupBy" rename="Customer Segment" />
+            <SummarizeField field="Spend" action="Median" rename="Median_Spend" />
+          </SummarizeFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="330" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>([Store Number]=109 and [Customer Segment]='Corporate')
+OR
+([Store Number]=105 and [Customer Segment]='Home Office')
+OR
+([Store Number]=107 and [Customer Segment]='Consumer')
+OR
+([Store Number]=104 and [Customer Segment]='Small Business')</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>([Store Number]=109 and [Customer Segment]='Corporate')
+OR
+([Store Number]=105 a...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>New Workflow11</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="343574b1-1068-40f1-838d-e688707f7cfe" />
+      <Telemetry>
+        <PreviousWorkflowId value="2332004e-1015-474b-b0e1-c5d45314ba3e" />
+        <OriginWorkflowId value="2332004e-1015-474b-b0e1-c5d45314ba3e" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
